@@ -14,4 +14,8 @@ public class FileUtil {
 	public static File getArticleDir(File base) {
 		return new File(base, "articles");
 	}
+
+	public static boolean containsPublishrAssets(File file) {
+		return getArticleDir(file).exists() && getConfigFile(file).exists() && getTemplateDir(file).exists();
+	}
 }

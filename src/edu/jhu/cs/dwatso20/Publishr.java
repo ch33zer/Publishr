@@ -36,14 +36,10 @@ public class Publishr {
 	}
 
 	public void open(File file) throws InvalidPublishrDirectoryException, IOException, InvalidConfigurationFileException {
-		if (containsPublishrAssets(file))
+		if (FileUtil.containsPublishrAssets(file))
 			load(file);
 		else 
 			throw new InvalidPublishrDirectoryException("Folder " + file.getAbsolutePath() + " does not contain /articles, /templates, and/or publishr.properties");
-	}
-
-	private boolean containsPublishrAssets(File file) {
-		return FileUtil.getArticleDir(file).exists() && FileUtil.getConfigFile(file).exists() && FileUtil.getTemplateDir(file).exists();
 	}
 
 	private void load(File file) throws IOException, InvalidConfigurationFileException {
